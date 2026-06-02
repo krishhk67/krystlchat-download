@@ -1,10 +1,142 @@
 <!DOCTYPE html>
 <html>
 <body style="background:#080611;color:white;font-family:Arial;text-align:center;padding-top:100px;">
-<h1>KRYSTLCHAT</h1>
-<p>Private. Temporary. Hidden.</p>
-<a href="./KrystlChat-v1.0.apk" download>
-    Download APK
-</a>
+<style>
+body{
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+radial-gradient(circle at top, #1a1030 0%, #09090f 45%, #050507 100%);
+font-family: Inter, Arial, sans-serif;
+color:white;
+overflow-x:hidden;
+}
+
+.container{
+width:min(90%,420px);
+text-align:center;
+padding:32px 24px;
+border-radius:24px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:
+0 0 40px rgba(168,85,247,.15),
+0 0 120px rgba(168,85,247,.08);
+}
+
+.logo{
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:18px;
+border:2px solid rgba(168,85,247,.5);
+}
+
+h1{
+margin:0;
+font-size:2.2rem;
+font-weight:800;
+letter-spacing:2px;
+}
+
+.subtitle{
+margin-top:14px;
+color:#b9b9c8;
+line-height:1.6;
+font-size:.95rem;
+}
+
+.download-btn{
+display:inline-block;
+margin-top:28px;
+padding:15px 34px;
+border-radius:14px;
+text-decoration:none;
+color:white;
+font-weight:700;
+font-size:1rem;
+background:linear-gradient(
+135deg,
+#9333ea,
+#c084fc
+);
+box-shadow:
+0 8px 30px rgba(168,85,247,.35);
+transition:.25s ease;
+}
+
+.download-btn:hover{
+transform:translateY(-3px);
+box-shadow:
+0 14px 40px rgba(168,85,247,.45);
+}
+
+.version{
+margin-top:18px;
+color:#8b8ba0;
+font-size:.85rem;
+}
+
+.features{
+margin-top:26px;
+text-align:left;
+color:#d8d8e4;
+font-size:.92rem;
+line-height:1.9;
+}
+
+.features div{
+padding:4px 0;
+}
+
+@media(max-width:480px){
+
+```
+.container{
+    width:88%;
+    padding:26px 18px;
+}
+
+h1{
+    font-size:1.8rem;
+}
+.download-btn{
+    width:100%;
+    box-sizing:border-box;
+}
+```
+}
+
+</style>
+    <div class="container">
+    <img src="logo.png" class="logo">
+
+    <h1>KRYSTLCHAT</h1>
+
+    <p class="subtitle">
+        Private. Temporary. Hidden.<br>
+        Anonymous conversations without accounts.
+    </p>
+
+    <a href="KrystlChat-v1.0.apk" class="download-btn">
+        Download APK
+    </a>
+
+    <div class="version">
+        Latest Version • Android
+    </div>
+
+    <div class="features">
+        <div>🔒 Secret Rooms</div>
+        <div>⏳ Auto-Deleting Chats</div>
+        <div>🌙 Dark Mode</div>
+        <div>👻 Anonymous Messaging</div>
+    </div>
+</div>
 </body>
 </html>
