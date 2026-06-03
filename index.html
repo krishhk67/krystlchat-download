@@ -1,11 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KRYSTLCHAT</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -13,93 +16,186 @@ box-sizing:border-box;
 }
 
 body{
+font-family:Inter,Arial,sans-serif;
 min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:24px;
-background:
-radial-gradient(circle at top,#24123f 0%,#09090f 45%,#050507 100%);
-font-family:Inter,Arial,sans-serif;
+padding:20px;
+overflow:hidden;
 color:white;
-overflow-x:hidden;
-position:relative;
+
+background:
+radial-gradient(circle at top,#31104f 0%,#0a0815 45%,#040406 100%);
 }
 
-/* background glow */
+/* Animated background glow */
+
 body::before{
 content:"";
 position:fixed;
-width:500px;
-height:500px;
-background:rgba(168,85,247,.12);
-filter:blur(120px);
-top:-150px;
+width:700px;
+height:700px;
+background:rgba(168,85,247,.18);
+filter:blur(140px);
+top:-250px;
 left:50%;
 transform:translateX(-50%);
+animation:pulse 6s ease-in-out infinite;
 pointer-events:none;
 }
 
+@keyframes pulse{
+0%,100%{
+opacity:.5;
+transform:translateX(-50%) scale(1);
+}
+50%{
+opacity:1;
+transform:translateX(-50%) scale(1.15);
+}
+}
+
+/* Floating particles */
+
+.particle{
+position:fixed;
+border-radius:50%;
+background:rgba(168,85,247,.2);
+pointer-events:none;
+animation:float linear infinite;
+}
+
+.p1{
+width:8px;
+height:8px;
+left:10%;
+top:100%;
+animation-duration:12s;
+}
+
+.p2{
+width:12px;
+height:12px;
+left:80%;
+top:100%;
+animation-duration:16s;
+}
+
+.p3{
+width:6px;
+height:6px;
+left:60%;
+top:100%;
+animation-duration:10s;
+}
+
+@keyframes float{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-120vh);
+}
+}
+
+/* Card */
+
 .container{
-width:min(92vw,420px);
-text-align:center;
-padding:34px 24px;
+width:min(92vw,430px);
+
+padding:38px 24px;
+
 border-radius:28px;
 
 background:rgba(255,255,255,.04);
+
 border:1px solid rgba(255,255,255,.08);
+
 backdrop-filter:blur(20px);
 
 box-shadow:
-0 0 40px rgba(168,85,247,.12),
+0 0 50px rgba(168,85,247,.18),
 0 0 120px rgba(168,85,247,.08);
+
+text-align:center;
+
+animation:cardIn 1s ease;
+}
+
+@keyframes cardIn{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* Logo */
+
 .logo{
-width:100px;
-height:100px;
+width:105px;
+height:105px;
 border-radius:50%;
 object-fit:cover;
 
 border:2px solid rgba(168,85,247,.65);
 
 box-shadow:
-0 0 20px rgba(168,85,247,.25);
+0 0 25px rgba(168,85,247,.35);
 
-margin-bottom:20px;
+animation:logoFloat 4s ease-in-out infinite;
 }
 
-/* Title */
+@keyframes logoFloat{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-8px);
+}
+}
+
 h1{
-font-size:2.4rem;
+margin-top:18px;
+font-size:2.5rem;
 font-weight:900;
 letter-spacing:2px;
-margin-bottom:10px;
 }
 
-/* Subtitle */
 .subtitle{
-color:#bdbdcf;
-line-height:1.6;
+margin-top:12px;
+color:#c3c3d3;
+line-height:1.7;
 font-size:.95rem;
-margin-bottom:28px;
 }
 
 /* Download button */
+
 .download-btn{
+position:relative;
+
 display:inline-block;
+
+margin-top:30px;
+
 width:100%;
 max-width:280px;
 
-padding:16px 20px;
+padding:16px;
 
 border-radius:16px;
 
-text-decoration:none;
 font-weight:800;
 font-size:1rem;
+
 color:white;
+text-decoration:none;
+
+overflow:hidden;
 
 background:
 linear-gradient(
@@ -109,52 +205,80 @@ linear-gradient(
 );
 
 box-shadow:
-0 10px 30px rgba(168,85,247,.35);
+0 10px 35px rgba(168,85,247,.4);
 
-transition:.25s;
+transition:.3s;
 }
 
 .download-btn:hover{
-transform:translateY(-3px);
-box-shadow:
-0 15px 40px rgba(168,85,247,.5);
+transform:translateY(-4px);
 }
 
-/* Version */
+.download-btn:active{
+transform:scale(.97);
+}
+
+/* Shine animation */
+
+.download-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:60%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.4),
+transparent
+);
+
+transform:skewX(-25deg);
+
+animation:shine 3s infinite;
+}
+
+@keyframes shine{
+100%{
+left:160%;
+}
+}
+
 .version{
 margin-top:16px;
 font-size:.85rem;
-color:#8f8fa5;
+color:#9797a8;
 }
 
-/* Features */
 .features{
 margin-top:28px;
 text-align:left;
-font-size:.95rem;
-color:#e5e5f0;
 }
 
 .feature{
-display:flex;
-align-items:center;
-gap:10px;
 padding:8px 0;
+font-size:.95rem;
+color:#ececf6;
 }
 
 /* Footer */
+
 .footer{
 margin-top:24px;
-font-size:.8rem;
-color:#77778a;
+font-size:.82rem;
+color:#7f7f91;
+line-height:1.6;
 }
 
 /* Mobile */
+
 @media(max-width:480px){
 
 .container{
-padding:28px 18px;
-border-radius:24px;
+padding:30px 18px;
 }
 
 .logo{
@@ -166,23 +290,20 @@ h1{
 font-size:2rem;
 }
 
-.subtitle{
-font-size:.9rem;
 }
 
-.download-btn{
-width:100%;
-}
-
-}
 </style>
 </head>
 
 <body>
 
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+
 <div class="container">
 
-<img src="favicon.png" class="logo" alt="KRYSTLCHAT Logo">
+<img src="favicon.png" class="logo" alt="Logo">
 
 <h1>KRYSTLCHAT</h1>
 
@@ -196,27 +317,14 @@ Anonymous conversations without accounts.
 </a>
 
 <div class="version">
-Latest Version • Android
+Latest Version v1.0 • Android
 </div>
 
 <div class="features">
-
-<div class="feature">
-🔒 Secret Rooms
-</div>
-
-<div class="feature">
-⏳ Auto-Deleting Chats
-</div>
-
-<div class="feature">
-🌙 Dark Mode
-</div>
-
-<div class="feature">
-👻 Anonymous Messaging
-</div>
-
+<div class="feature">🔒 Secret Rooms</div>
+<div class="feature">⏳ Auto-Deleting Chats</div>
+<div class="feature">🌙 Dark Mode</div>
+<div class="feature">👻 Anonymous Messaging</div>
 </div>
 
 <div class="footer">
@@ -227,3 +335,4 @@ No accounts • No tracking • No nonsense
 
 </body>
 </html>
+```
